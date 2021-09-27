@@ -1,0 +1,7 @@
+stages:
+  - deploy
+
+production deploy:
+  stage: deploy
+  script:
+    - echo "Im deploying :-)"
