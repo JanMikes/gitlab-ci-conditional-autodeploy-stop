@@ -9,6 +9,11 @@ production deploy:
 
     - sprint_branches_count=$(./count-sprint-branches.sh)
 
+    # Debug statements
+    - echo $sprint_branches_count
+    - echo $CI_JOB_MANUAL
+    - echo [[ $sprint_branches > 1 ]]
+
     # If not triggered manually & have more than 1 sprint branch, exit early with 0 (success code)
     - if [[ $CI_JOB_MANUAL != true && $sprint_branches > 1 ]]; then exit 0; fi
   script:
