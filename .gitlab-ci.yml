@@ -5,7 +5,7 @@ production deploy:
   stage: deploy
   before_script:
     # Install jq (https://stedolan.github.io/jq/download/)
-    - apt-get update -y && apt-get install jq
+    - apt-get update -y && apt-get install -y jq
     - sprint_branches=$(./count-sprint-branches.sh)
     # If not triggered manually, exit with 0 (success code)
     - if [[ $CI_JOB_MANUAL != true && $sprint_branches > 0 ]]; then exit 0; fi
