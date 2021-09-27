@@ -3,5 +3,8 @@ stages:
 
 production deploy:
   stage: deploy
+  before_script:
+    # If not triggered manually, exit with 0 (success code)
+    - if [[ $CI_JOB_MANUAL != true ]]; then exit 0; fi
   script:
     - echo "Im deploying :-)"
