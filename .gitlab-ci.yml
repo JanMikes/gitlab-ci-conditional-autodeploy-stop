@@ -5,7 +5,7 @@ production deploy:
   stage: deploy
   before_script:
     # Install jq (https://stedolan.github.io/jq/download/)
-    - apt-get install jq
+    - apt-get update && apt-get install jq
     - ./get-branches.sh
     # If not triggered manually, exit with 0 (success code)
     - if [[ $CI_JOB_MANUAL != true ]]; then exit 0; fi
