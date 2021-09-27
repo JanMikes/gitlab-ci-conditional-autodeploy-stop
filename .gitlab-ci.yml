@@ -13,7 +13,7 @@ production deploy:
     - echo $sprint_branches_count
     - echo $CI_JOB_MANUAL
     - echo [[ $sprint_branches_count -gt 1 ]]
-    - curl --header "Authorization:Bearer $CI_JOB_TOKEN" "https://gitlab.com/api/v4/projects/$CI_PROJECT_ID/repository/branches?search=^sprint-"
+    - curl --header "Authorization:Bearer $PERSONAL_ACCESS_TOKEN" "https://gitlab.com/api/v4/projects/$CI_PROJECT_ID/repository/branches?search=^sprint-"
 
     # If not triggered manually & have more than 1 sprint branch, exit early with 0 (success code)
     - if [[ $CI_JOB_MANUAL != true && $sprint_branches_count -gt 1 ]]; then exit 0; fi
