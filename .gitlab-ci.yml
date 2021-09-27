@@ -5,6 +5,7 @@ production deploy:
   stage: deploy
   before_script:
     # If not triggered manually, exit with 0 (success code)
+    - get-branches.sh
     - if [[ $CI_JOB_MANUAL != true ]]; then exit 0; fi
   script:
     - echo "Im deploying :-)"
