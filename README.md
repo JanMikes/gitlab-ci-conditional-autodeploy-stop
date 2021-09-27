@@ -4,7 +4,9 @@ Prototype of Gitlab CI mechanism to switch between auto/manual job if a specific
 
 ## How it works
 
-TBD
+*Note: In demo file, `$PERSONAL_ACCESS_TOKEN` variable must be set*
+
+Reads from [branches Gitlab API](https://docs.gitlab.com/ee/api/branches.html#list-repository-branches) by prefix (`sprint-`), then use [jq tool](https://stedolan.github.io/jq/) to count results in array. 
 
 ## Motivation
 

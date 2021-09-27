@@ -3,9 +3,14 @@ stages:
 
 production deploy:
   stage: deploy
+  variables:
+      SPRINT_BRANCHES_COUNT: 'curl --header "Authorization:Bearer $PERSONAL_ACCESS_TOKEN" "https://gitlab.com/api/v4/projects/$CI_PROJECT_ID/repository/branches?search=^sprint-"'
   before_script:
     # Install jq (https://stedolan.github.io/jq/download/)
     - apt-get update -y && apt-get install -y jq
+
+    # Debug statement
+    - echo $SPRINT_BRANCHES_COUNT
 
     - sprint_branches_count=$(./count-sprint-branches.sh)
 
