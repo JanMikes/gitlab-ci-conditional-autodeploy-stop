@@ -17,6 +17,17 @@ production deploy auto:
       # If not triggered manually & have more than 1 sprint branch, exit early with 0 (success code)
       - if [[ $sprint_branches_count -gt 1 ]]; then exit 0; fi
 
+production deploy auto latest sprint:
+  extends: .production-deploy-job
+  before_script:
+      # Install jq (https://stedolan.github.io/jq/download/)
+      - apt-get update -y && apt-get install -y jq
+
+      - latest_sprint_branch=$(./get-latest-branch-name.sh)
+
+      # If commit is not made into latest sprint branch, exit early
+      - if [[ $CI_COMMIT_BRANCH != $latest_sprint_branch ]]; then exit 0; fi
+
 production deploy manual:
   extends: .production-deploy-job
   when: manual
