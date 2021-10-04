@@ -25,6 +25,10 @@ production deploy auto latest sprint:
 
       - latest_sprint_branch=$(./get-latest-branch-name.sh)
 
+      # Debug statements
+      - echo $CI_COMMIT_BRANCH
+      - echo $latest_sprint_branch
+
       # If commit is not made into latest sprint branch, exit early
       - if [[ $CI_COMMIT_BRANCH != $latest_sprint_branch ]]; then exit 0; fi
 
